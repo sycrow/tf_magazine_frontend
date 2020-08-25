@@ -1,0 +1,81 @@
+<div class="header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="user-menu">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-heart"></i>Lista de desejos</a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i>Carrinho</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i>Minha conta</a></li>
+                        <li><a href="#"><i class="fa fa-lock"></i>Login</a></li>
+                        <li><a href="#"><i class="fa fa-close"></i>Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end header area -->
+
+<div class="site-branding-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="logo">
+                    <h1><a href=""><img src="../../assets/img/logo-grand.png" class="image-logo"></a></h1>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="shopping-item">
+                    <a href="#">
+                        Carrinho - <span class="cart-amunt">R$</span>
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="product-count">5</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end site branding area-->
+
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <button class="navbar-toggle" mat-button [matMenuTriggerFor]="menu">
+                    Todos os departamentos</button>
+                <mat-menu #menu="matMenu" class="matMenu">
+                    <button class="navbar-toggle" mat-menu-item>Artigos para festas</button>
+                    <button class="navbar-toggle" mat-menu-item>Cama, mesa e banho</button>
+                    <button class="navbar-toggle" mat-menu-item>Casa e construção</button>
+                    <button class="navbar-toggle" mat-menu-item>Eletrodomésticos</button>
+                    <button class="navbar-toggle" mat-menu-item>Esportes e lazer</button>
+                    <button class="navbar-toggle" mat-menu-item>Ferramentas</button>
+                    <button class="navbar-toggle" mat-menu-item>Games</button>
+                    <button class="navbar-toggle" mat-menu-item>Informática</button>
+                    <button class="navbar-toggle" mat-menu-item>Instrumentos musicais</button>
+                    <button class="navbar-toggle" mat-menu-item>Livros</button>
+                    <button class="navbar-toggle" mat-menu-item>Moda</button>
+                    <button class="navbar-toggle" mat-menu-item>Papelaria</button>
+                    
+                </mat-menu>
+                  
+                <button class="navbar-toggle">
+                    Ferramentas
+                </button>
+                <button class="navbar-toggle">
+                    Eletrodomésticos
+                </button>
+                <button class="navbar-toggle">
+                    Informática
+                </button>
+                <button class="navbar-toggle">
+                    Esporte e lazer
+                </button>
+                <button class="navbar-toggle">
+                    Moda
+                </button>
+            </div>
+        </div>
+    </div>
+</div> <!-- end mainmenu area-->
