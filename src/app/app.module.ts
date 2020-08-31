@@ -9,13 +9,31 @@ import { HomeComponent } from 'src/pages/home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartComponent } from './cart/cart.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ProdutoDetailComponent } from './produto-detail/produto-detail.component';
+import { PickAddressComponent } from './pick-address/pick-address.component';
+import { ProductsComponent } from './products/products.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent,
+    OrderConfirmationComponent,
+    PaymentComponent,
+    ProdutoDetailComponent,
+    PickAddressComponent,
+    ProductsComponent,
+    ProfileComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
