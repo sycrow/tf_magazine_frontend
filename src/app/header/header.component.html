@@ -45,18 +45,7 @@
                 <button class="navbar-toggle" mat-button [matMenuTriggerFor]="menu">
                     Todos os departamentos</button>
                 <mat-menu #menu="matMenu" class="matMenu">
-                    <button class="navbar-toggle" mat-menu-item>Artigos para festas</button>
-                    <button class="navbar-toggle" mat-menu-item>Cama, mesa e banho</button>
-                    <button class="navbar-toggle" mat-menu-item>Casa e construção</button>
-                    <button class="navbar-toggle" mat-menu-item>Eletrodomésticos</button>
-                    <button class="navbar-toggle" mat-menu-item>Esportes e lazer</button>
-                    <button class="navbar-toggle" mat-menu-item>Ferramentas</button>
-                    <button class="navbar-toggle" mat-menu-item>Games</button>
-                    <button class="navbar-toggle" mat-menu-item>Informática</button>
-                    <button class="navbar-toggle" mat-menu-item>Instrumentos musicais</button>
-                    <button class="navbar-toggle" mat-menu-item>Livros</button>
-                    <button class="navbar-toggle" mat-menu-item>Moda</button>
-                    <button class="navbar-toggle" mat-menu-item>Papelaria</button>
+                    <button class="navbar-toggle" mat-menu-item *ngFor="let item of items"> {{ item.name }} </button>
                     
                 </mat-menu>
                   

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../services/domain/category.service';
+import { API_CONFIG } from 'src/config/api.config';
+import { CategoryDTO } from 'src/models/category.dto';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  bucketUrl : string = API_CONFIG.bucketBaseUrl;
 
-  ngOnInit(): void {
+  items : CategoryDTO[];
+
+  constructor(public categoryService : CategoryService) { }
+
+  ngOnInit() {
+    this.categoryService.findAll().subscribe(response => {
+      this.items = response;
+    });
+  }
+
+  forCategory(category_id : string) {
+    
   }
 
 }
