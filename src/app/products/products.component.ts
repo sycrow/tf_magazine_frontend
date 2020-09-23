@@ -1,3 +1,4 @@
+import { CategoryService } from './../../services/domain/category.service';
 import { API_CONFIG } from './../../config/api.config';
 import { CategoryDTO } from './../../models/category.dto';
 import { ProductDTO } from './../../models/product.dto';
@@ -18,18 +19,20 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     public produtoService : ProductService,
-    public http: HttpClient
+    public http: HttpClient,
+    public categoryService: CategoryService
   ) { }
 
   ngOnInit() {
+    this.loadData();
   }
 
-  loadData(category : CategoryDTO) {
+  loadData() {
 
-    const url = `${API_CONFIG.baseUrl}/${category.id}`;
+    const id = this.categoryService.getId();
     
-    return this.produtoService.findByCategoria(category.id, this.page, 10).subscribe(response => {
-      console.log(response);
+    return this.produtoService.findByCategoria(id, this.page, 10).subscribe(response => {
+      this.items = this.items.concat(response['content']);
     },
     error => {
       console.log(error);

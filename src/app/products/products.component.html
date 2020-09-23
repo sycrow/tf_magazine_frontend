@@ -1,3 +1,6 @@
 <app-header></app-header>
-<p>hsshsh</p>
+<button *ngFor="let item of items">
+    <h1>{{ item.name }}</h1>
+    <h2>{{ item.price }}</h2>
+</button>
 <app-footer></app-footer>
