@@ -1,7 +1,12 @@
+import { API_CONFIG } from './../../config/api.config';
+import { CategoryDTO } from './../../models/category.dto';
+import { Observable } from 'rxjs';
+import { ProductService } from './../../services/domain/product.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/domain/category.service';
-import { API_CONFIG } from 'src/config/api.config';
-import { CategoryDTO } from 'src/models/category.dto';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ProductDTO } from 'src/models/product.dto';
 
 @Component({
   selector: 'app-header',
@@ -14,16 +19,31 @@ export class HeaderComponent implements OnInit {
 
   items : CategoryDTO[];
 
-  constructor(public categoryService : CategoryService) { }
+  category : CategoryDTO;
+
+  page : number = 0;
+
+  constructor(
+    public categoryService : CategoryService,
+    private router: Router,
+    public produtoService : ProductService,
+    public http : HttpClient
+    ) { }
 
   ngOnInit() {
     this.categoryService.findAll().subscribe(response => {
       this.items = response;
+      console.log(this.items)
+    },
+    err => {
+
     });
   }
 
-  forCategory(category_id : string) {
-    
-  }
+  clickCategory(id: string) {
 
+    const url = `${API_CONFIG.baseUrl}/categorias/${id}`;
+    console.log(url);
+
+  }
 }

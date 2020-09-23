@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from "../../config/api.config";
 import { CategoryDTO } from '../../models/category.dto';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +16,5 @@ export class CategoryService {
     return this.http.get<CategoryDTO[]>(`${API_CONFIG.baseUrl}/categorias`);
 
   }
+
 }

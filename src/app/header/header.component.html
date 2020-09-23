@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href=""><img src="../../assets/img/logo-grand.png" class="image-logo"></a></h1>
+                    <h1><a routerLink="/"><img src="../../assets/img/logo-grand.png" class="image-logo"></a></h1>
                 </div>
             </div>
 
@@ -38,6 +38,7 @@
     </div>
 </div> <!-- end site branding area-->
 
+
 <div class="mainmenu-area">
     <div class="container">
         <div class="row">
@@ -45,11 +46,10 @@
                 <button class="navbar-toggle" mat-button [matMenuTriggerFor]="menu">
                     Todos os departamentos</button>
                 <mat-menu #menu="matMenu" class="matMenu">
-                    <button class="navbar-toggle" mat-menu-item *ngFor="let item of items"> {{ item.name }} </button>
+                    <button class="navbar-toggle" mat-menu-item (click)="clickCategory(item.id)" *ngFor="let item of items"> {{ item.name }} </button>
                     
                 </mat-menu>
-                  
-                <button class="navbar-toggle">
+                <button class="navbar-toggle" routerLink="products">
                     Ferramentas
                 </button>
                 <button class="navbar-toggle">

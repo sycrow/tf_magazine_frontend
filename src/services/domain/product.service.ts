@@ -1,8 +1,9 @@
+import { CategoryDTO } from './../../models/category.dto';
+import { ProductDTO } from './../../models/product.dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from 'src/config/api.config';
 import { Observable } from 'rxjs';
-import { ProductDTO } from 'src/models/product.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class ProductService {
 
   constructor(public http: HttpClient) { }
 
-  findByCategoria(categoria_id: string, page: number=0, linesPerPage: number= 20) {
+  findByCategoria(categoria_id: string, page: number=0, linesPerPage: number= 20) : Observable<ProductDTO[]> {
 
-    return this.http.get(`${API_CONFIG.baseUrl}/produtos/?categorias=${categoria_id}&page=${page}&linesPerPage=${linesPerPage}`);
+    return this.http.get<ProductDTO[]>(`${API_CONFIG.baseUrl}/produtos/?categorias=${categoria_id}&page=${page}&linesPerPage=${linesPerPage}`);
 
   }
 
