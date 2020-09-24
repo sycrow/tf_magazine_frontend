@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
+  id: string;
+
   constructor(public http: HttpClient) { }
 
   findByCategoria(categoria_id: string, page: number=0, linesPerPage: number= 20) : Observable<ProductDTO[]> {
@@ -36,6 +38,14 @@ export class ProductService {
     let url = `${API_CONFIG.bucketBaseUrl}/prod${id}.jpg`;
     return this.http.get(url, {responseType: 'blob'});
 
+  }
+
+  setId(id: string) {
+    this.id = id;
+  }
+
+  getId() {
+    return this.id;
   }
 
 }

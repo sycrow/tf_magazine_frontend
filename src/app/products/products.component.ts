@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/domain/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -16,11 +17,13 @@ export class ProductsComponent implements OnInit {
 
   items: ProductDTO[] = [];
   page: number = 0;
+  item: ProductDTO;
 
   constructor(
     public produtoService : ProductService,
     public http: HttpClient,
-    public categoryService: CategoryService
+    public categoryService: CategoryService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -37,6 +40,13 @@ export class ProductsComponent implements OnInit {
     error => {
       console.log(error);
     })
+
+  }
+
+  readProduct(id: string) {
+
+    this.router.navigate(['/products/'+id]);
+    this.produtoService.setId(id);
 
   }
 

@@ -1,1 +1,17 @@
-<p>produto-detail works!</p>
+<app-header></app-header>
+<div class="mat-card">
+    <mat-card class="card">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <mat-card-content>
+            <h2>{{product?.name}}</h2>
+            <h1>{{product?.price}}</h1>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-buttons>Adicionar ao carrinho</button>
+            <button mat-buttons>Voltar a página anterior</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+
+<app-footer></app-footer>

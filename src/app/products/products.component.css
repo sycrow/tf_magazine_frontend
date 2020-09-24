@@ -1,0 +1,32 @@
+.card {
+    max-width: 300px;
+    max-height: 500px;
+    height: 500px;
+    margin-left: 10px;
+}
+
+.card img {
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+
+.mat-card {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.a-card a {
+    display: flex;
+    text-decoration: none;
+}
+
+.a-card h1 {
+    font-size: 20px;
+    display: flex;
+    position: static;
+    text-decoration: none;
+}

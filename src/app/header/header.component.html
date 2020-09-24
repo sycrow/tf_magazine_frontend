@@ -49,20 +49,8 @@
                     <button class="navbar-toggle" mat-menu-item (click)="clickCategory(item.id)" *ngFor="let item of items"> {{ item.name }} </button>
                     
                 </mat-menu>
-                <button class="navbar-toggle" routerLink="products">
-                    Ferramentas
-                </button>
-                <button class="navbar-toggle">
-                    Eletrodomésticos
-                </button>
-                <button class="navbar-toggle">
-                    Informática
-                </button>
-                <button class="navbar-toggle">
-                    Esporte e lazer
-                </button>
-                <button class="navbar-toggle">
-                    Moda
+                <button class="navbar-toggle" (click)="clickCategory(item.id)" *ngFor="let item of items | slice:0:7">
+                    {{item.name}}
                 </button>
             </div>
         </div>
