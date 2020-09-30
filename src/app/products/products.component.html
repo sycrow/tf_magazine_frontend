@@ -1,15 +1,18 @@
 <app-header></app-header>
 <div class="mat-card">
-    <mat-card class="card" *ngFor="let item of items">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-        <mat-card-content>
-            <button class="a-card" (click)="readProduct(item.id)">
-                <h1>{{ item.name }}</h1>
-                <h2>{{ item.price | currency: 'BRL' }}</h2>
-            </button>
-        </mat-card-content>
-        
-    </mat-card>
+    <button *ngFor="let item of items" (click)="readProduct(item.id)" class="button-card">
+        <mat-card class="card" >
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+            <mat-card-content class="content">
+                <a class="a-card">
+                    <h1>{{ item.name }}</h1>
+                    <h2>{{ item.price | currency: 'BRL' }}</h2>
+                </a>
+            </mat-card-content>
+            
+        </mat-card>
+    </button>
+    
 </div>
 
 

@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
       this.items = response;
     },
     err => {
-
+      console.log(err);
     });
   }
 

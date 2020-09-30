@@ -2,14 +2,25 @@
 <div class="mat-card">
     <mat-card class="card">
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-        <mat-card-content>
-            <h2>{{product?.name}}</h2>
-            <h1>{{product?.price}}</h1>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-buttons>Adicionar ao carrinho</button>
-            <button mat-buttons>Voltar a página anterior</button>
-        </mat-card-actions>
+        <div class="content">
+            <mat-card-content>
+                <h2>{{product?.name}}</h2>
+                <h1>{{product?.price | currency: 'BRL'}}</h1>
+            </mat-card-content>
+            <mat-card-actions class="actions">
+                <button mat-buttons class="buttonCart" (click)="addToCart()">
+                    <i class="material-icons">
+                        add_shopping_cart
+                    </i>
+                    Adicionar ao carrinho</button>
+                <button mat-buttons class="buttonReturn" (click)="comeBack()">
+                    <i class="material-icons">
+                        arrow_back
+                    </i>
+                    Voltar a página anterior</button>
+            </mat-card-actions>
+        </div>
+        
     </mat-card>
 </div>
 

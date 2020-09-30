@@ -1,0 +1,74 @@
+.mat-card {
+    justify-content: center;
+    align-content: center;
+}
+
+.card img {
+    width: 100px;
+    margin-top: 5px;
+    margin-left: 5px;
+    position: static;
+    float: left;
+}
+
+.info1 {
+    margin-left: 20px;
+    margin-top: 5px;
+    float: left;
+}
+
+.info2{
+    float: left;
+    margin-left: 300px;
+}
+.price {
+    float: right;
+    margin-right: 10px;
+}
+
+.freight {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.act {
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: 80%;
+}
+
+.footer {
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: flex;
+    margin-right: 20px;
+}
+
+.buttonPay {
+    height: 70px;
+    margin-bottom: 5px;
+    border: none;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #0aa338;
+}
+
+.buttonPay:hover {
+    background-color: #086e26;
+}
+
+.buttonReturn {
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    height: 30px;
+    color: white;
+    background-color: #2889c9;
+}
+
+.buttonReturn:hover {
+    background-color: #0a5485;
+}
+

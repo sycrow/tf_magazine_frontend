@@ -1,8 +1,5 @@
 import { CategoryService } from './../../services/domain/category.service';
-import { API_CONFIG } from './../../config/api.config';
-import { CategoryDTO } from './../../models/category.dto';
 import { ProductDTO } from './../../models/product.dto';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/domain/product.service';

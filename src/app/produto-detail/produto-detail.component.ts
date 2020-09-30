@@ -1,6 +1,9 @@
+import { CartService } from './../../services/domain/cart.service';
+import { CategoryService } from './../../services/domain/category.service';
 import { ProductService } from './../../services/domain/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductDTO } from 'src/models/product.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto-detail',
@@ -12,7 +15,10 @@ export class ProdutoDetailComponent implements OnInit {
   product: ProductDTO;
 
   constructor(
-    public produtoService: ProductService
+    public produtoService: ProductService,
+    public categoryService: CategoryService,
+    public cartService: CartService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -29,6 +35,19 @@ export class ProdutoDetailComponent implements OnInit {
       console.log(error)
     })
 
+  }
+
+  addToCart(produto: ProductDTO) {
+    
+    this.cartService.addProduct(produto);
+    this.router.navigate(['/cart']);
+
+  }
+
+  comeBack() {
+    const id = this.categoryService.getId();
+
+    this.router.navigate(['/products/categorias/'+id]);
   }
 
 }

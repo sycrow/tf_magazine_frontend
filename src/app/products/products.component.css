@@ -1,14 +1,24 @@
 .card {
-    max-width: 300px;
+    max-width: 350px;
     max-height: 500px;
     height: 500px;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .card img {
     align-items: center;
     display: flex;
     position: relative;
+}
+
+.button-card > .card:hover {
+    max-width: 400px;
+}
+
+.button-card {
+    background: none;
+    border: none
 }
 
 .mat-card {
@@ -19,14 +29,16 @@
     justify-content: center;
 }
 
-.a-card a {
-    display: flex;
+.a-card {
+    font-size: 20px;
     text-decoration: none;
+    color: black;
+    align-items: center;
+    justify-content: center;
 }
 
-.a-card h1 {
-    font-size: 20px;
-    display: flex;
-    position: static;
-    text-decoration: none;
+.a-card:hover {
+    font-size: 25px;
+    color: #4D83FF;
+    text-decoration: underline;
 }
