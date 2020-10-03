@@ -8,7 +8,7 @@
                 <h1>{{product?.price | currency: 'BRL'}}</h1>
             </mat-card-content>
             <mat-card-actions class="actions">
-                <button mat-buttons class="buttonCart" (click)="addToCart()">
+                <button mat-buttons class="buttonCart" (click)="addToCart(product)">
                     <i class="material-icons">
                         add_shopping_cart
                     </i>

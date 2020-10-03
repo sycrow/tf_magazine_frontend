@@ -7,21 +7,35 @@
             <h1>Carrinho</h1>
         </div>
         
-        <div class="card">
+        <div class="card" *ngFor="let item of items">
             <mat-card-content>
                 <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
                 <div class="info1">
-                    <h2> {{products?.name}} </h2>
-                    <small>Código do produto: {{products?.id}}</small>
+                    <h2> {{item.product.name}} </h2>
+                    <small>Código do produto: {{item.product.id}}</small>
                 </div>
                 <div class="info2">
                     <h2>Quantidade</h2>
-                    <input type="number">
-                    <button mat-buttons>Excluir</button>
+                    <button mat-buttons (click)="decreaseQuantity(item.product)" class="decrease buttonsActions">
+                        <i class="material-icons">
+                            remove
+                        </i>
+                    </button>
+                    <input type="text" disabled="true" value="{{item.quantidade}}" class="quantityValue">
+                    <button mat-buttons (click)="increaseQuantity(item.product)" class="increase buttonsActions">
+                        <i class="material-icons">
+                            add
+                        </i>
+                    </button>
+                    <button mat-buttons (click)="removeItem(item.product)" class="remove buttonsActions">
+                        <i class="material-icons">
+                            clear
+                        </i>
+                    </button>
                 </div>
                 <div class="price">
                     <h2>Preço</h2>
-                    <h1>{{products?.price | currency:"BRL"}}</h1>
+                    <h1>{{item.product.price | currency:"BRL"}}</h1>
                 </div>
             </mat-card-content>
         </div>
@@ -33,12 +47,12 @@
         </div>
         <div class="card">
             <mat-card-actions class="act">
-                <h2 *ngIf="subtotal() > 0">Subtotal() R$ {{subtotal()}}</h2>
-                <h2 *ngIf="subtotal() <= 0">Seu carrinho está vazio!</h2>
+                <h2 *ngIf="subtotal(product) > 0">Subtotal() R$ {{subtotal()}}</h2>
+                <h2 *ngIf="subtotal(product) <= 0">Seu carrinho está vazio!</h2>
 
                 <div class="footer">
-                    <button mat-buttons class="buttonPay">Comprar</button>
-                    <button mat-buttons class="buttonReturn">Comprar mais produtos</button>
+                    <button mat-buttons class="buttonPay" (click)="checkout()">Comprar</button>
+                    <button mat-buttons class="buttonReturn" (click)="goOn()">Comprar mais produtos</button>
                 </div>
                 
             </mat-card-actions>

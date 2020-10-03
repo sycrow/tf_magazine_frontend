@@ -1,3 +1,5 @@
+import { PickAddressComponent } from './pick-address/pick-address.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
@@ -22,6 +24,10 @@ const routes: Routes = [
   {
     path: "cart",
     component: CartComponent
+  },
+  {
+    path: "pickAddress",
+    component: PickAddressComponent
   }
 ];
 

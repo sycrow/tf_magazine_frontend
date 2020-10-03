@@ -14,22 +14,36 @@
 .info1 {
     margin-left: 20px;
     margin-top: 5px;
+    width: 10%;
     float: left;
 }
 
 .info2{
     float: left;
     margin-left: 300px;
+    justify-content: center;
+    align-items: center;
 }
 .price {
     float: right;
     margin-right: 10px;
+    width: 12%;
 }
 
 .freight {
     float: left;
     margin-left: 10px;
     margin-top: 10px;
+    font-size: 15px;
+}
+
+.freight button{
+    height: 43px;
+    border: none;
+    background-color: #0a5485;
+    margin-left: 4px;
+    color: white;
+    border-radius: 5px;
 }
 
 .act {
@@ -72,3 +86,35 @@
     background-color: #0a5485;
 }
 
+.buttonsActions {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 4px;
+    height: 40px;
+}
+
+.quantityValue {
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+    width: 120px;
+    height: 40px;
+    padding-top: 20px;
+}
+
+.increase {
+    background-color: #2880bb;
+}
+
+.decrease {
+    background-color: #081664;
+
+}
+
+.remove {
+    background-color: #af1a1a;
+}
