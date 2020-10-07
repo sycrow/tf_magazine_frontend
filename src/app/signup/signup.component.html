@@ -1,1 +1,121 @@
-<p>signup works!</p>
+<div class="matCard" align="center">
+    <div class="matCardTitle">
+        <div class="logo">
+            <h1><a routerLink="/"><img src="../../assets/img/logo-grand.png" class="image-logo"></a></h1>
+        </div>
+        <h1 class="textTitle">CRIAR CONTA</h1>
+    </div>
+    <mat-card>
+        <mat-card-content>
+            <form class="form" [formGroup]="formGroup">
+                
+                <small class="danger" *ngIf="formGroup.controls['name'].dirty && formGroup.controls['name'].errors">Valor inválido</small>
+                <div class="formField">
+                    <h1>Nome*</h1> 
+                    <input formControlName="name" type="text">  
+                </div>
+
+                <small class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>Email*</h1> 
+                    <input formControlName="email" type="text">  
+                </div>
+
+                <div class="formField">
+                    <mat-list>
+                        <mat-nav-list>
+                            <h1>Tipo de cliente*</h1>
+                        </mat-nav-list>
+                        <mat-list-item>
+                            <h2>Pessoa física</h2>
+                            <input formControlName="type" type="radio" value="1">
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <h2>Pessoa Jurídica</h2>
+                            <input formControlName="type" type="radio" value="2">
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+
+
+                <small class="danger" *ngIf="formGroup.controls.cpfOuCnpj.dirty && formGroup.controls.cpfOuCnpj.errors">Valor inválido</small>
+                <div class="formField">
+                    <h1>CPF ou CNPJ*</h1>
+                    <input formControlName="cpfOuCnpj" type="text">
+                </div>
+                
+                <small class="danger" *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>Senha*</h1>
+                    <input formControlName="password" type="password">
+                </div>
+                
+                <small class="danger" *ngIf="formGroup.controls.publicPlace.dirty && formGroup.controls.publicPlace.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>Logradouro*</h1>
+                    <input formControlName="publicPlace" type="text">
+                </div>
+                
+                <small class="danger" *ngIf="formGroup.controls.number.dirty && formGroup.controls.number.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>Número*</h1>
+                    <input formControlName="number" type="text">
+                </div>
+                
+                <small class="danger" *ngIf="formGroup.controls.complement.dirty && formGroup.controls.complement.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>Complemento</h1>
+                    <input formControlName="complement" type="text">
+                </div>
+                
+                <small class="danger" *ngIf="formGroup.controls.neighborhood.dirty && formGroup.controls.neighborhood.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>Bairro*</h1>
+                    <input formControlName="neighborhood" type="text">
+                </div>
+                
+                <small class="danger" *ngIf="formGroup.controls.cep.dirty && formGroup.controls.cep.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>CEP</h1>
+                    <input formControlName="cep" type="text">
+                </div>
+                
+                <small class="danger" *ngIf="formGroup.controls.telefone1.dirty && formGroup.controls.telefone1.errors">Valor inválido</small>
+                <div class="formField ">
+                    <h1>Telefone 1*</h1>
+                    <input formControlName="telefone1" type="text">
+                </div>
+                
+                <div class="formField ">
+                    <h1>Telefone 2</h1>
+                    <input formControlName="telefone2" type="text">
+                </div>
+
+                
+                <div class="formField">
+                    <h1>Estado*</h1>
+                    <mat-select formControlName="stateId">
+                        <mat-option *ngFor="let estado of estados; first as f" [value]="estado.id" selected="f" (click)="updateCidades()">{{estado.name}}</mat-option>
+                    </mat-select>
+                </div>
+
+                
+                <div class="formField">
+                    <h1>Cidade*</h1>
+                    <mat-select formControlName="cityId">
+                        <mat-option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.name}}</mat-option>
+                    </mat-select>
+                </div>
+
+                
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button class="create buttonCtrl" (click)="signup()" [disabled]="formGroup.invalid">Criar conta</button>
+            <button class="loginPage buttonCtrl" (click)="loginPage()">Fazer login</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<app-footer></app-footer>

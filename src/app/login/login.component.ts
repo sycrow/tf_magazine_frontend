@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { CredentialsDTO } from './../../models/credentials.dto';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  creds: CredentialsDTO = {
+    email: "",
+    password: ""
+  }
+
+  constructor(
+    public auth: AuthService,
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.auth.authenticate(this.creds).subscribe(response => {
+      this.auth.successfullLogin(response.headers.get('Authorization'));
+      
+      this.router.navigate(['/']);
+      console.log("LOGIN EFETUADO")
+    },
+    error => {
+      console.log(error)
+    }
+    );
+  }
+
+  createAnAccount() {
+    this.router.navigate(['/createAnAccount']);
   }
 
 }

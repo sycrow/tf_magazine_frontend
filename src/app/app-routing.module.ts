@@ -1,3 +1,5 @@
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 import { PickAddressComponent } from './pick-address/pick-address.component';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { CartComponent } from './cart/cart.component';
@@ -28,6 +30,14 @@ const routes: Routes = [
   {
     path: "pickAddress",
     component: PickAddressComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "createAnAccount",
+    component: SignupComponent
   }
 ];
 

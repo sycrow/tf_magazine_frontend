@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="matCard" align="center">
+    <div class="matCardTitle">
+        <div class="logo">
+            <h1><a routerLink="/"><img src="../../assets/img/logo-grand.png" class="image-logo"></a></h1>
+        </div>
+        <h1 class="textTitle">LOGIN</h1>
+    </div>
+    <mat-card>
+        <mat-card-content>
+            <form class="form">
+                <mat-form-field>
+                    <div class="formField">
+                        <h1>Email</h1> 
+                        <input [(ngModel)]="creds.email" name="email" type="text">  
+                    </div>
+                </mat-form-field>
+                <mat-form-field>
+                    <div class="formField">
+                        <h1>Senha</h1> 
+                        <input [(ngModel)]="creds.password" name="email" type="password">
+                    </div>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="login()" class="enter">Entrar</button>
+            <button (click)="createAnAccount()" class="create">Criar uma conta</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<app-footer></app-footer>
+
+
+
+
+

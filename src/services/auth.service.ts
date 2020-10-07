@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { API_CONFIG } from "../config/api.config";
 import { LocalUser } from "../models/local_user";
 import { StorageService } from "./storage.service";
-import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { CartService } from './domain/cart.service';
 
 @Injectable({
@@ -12,7 +12,7 @@ import { CartService } from './domain/cart.service';
 })
 export class AuthService {
 
-  jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelper: JwtHelperService = new JwtHelperService();
 
   constructor(
     public http: HttpClient,

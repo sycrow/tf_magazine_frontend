@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { CredentialsDTO } from './../../models/credentials.dto';
 import { CategoryService } from './../../services/domain/category.service';
 import { CartItem } from './../../models/cart-item';
 import { CartService } from './../../services/domain/cart.service';
@@ -15,6 +17,10 @@ export class CartComponent implements OnInit {
 
   items: CartItem[];
   product: ProductDTO;
+  cres: CredentialsDTO = {
+    email: "",
+    password: ""
+  }
 
   constructor(
     public productService: ProductService,
@@ -46,11 +52,15 @@ export class CartComponent implements OnInit {
   }
 
   goOn() {
+    
     this.router.navigate(['/']);
+    
   }
 
   checkout() {
+
     this.router.navigate(['/pickAddress']);
+    
   }
 
 }
