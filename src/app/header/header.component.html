@@ -4,11 +4,9 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i>Lista de desejos</a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i>Carrinho</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i>Minha conta</a></li>
+                        <li><a routerLink="/profile"><i class="fa fa-user"></i>Minha conta</a></li>
                         <li><a routerLink="/login"><i class="fa fa-lock"></i>Login</a></li>
-                        <li><a href="#"><i class="fa fa-close"></i>Sair</a></li>
+                        <li><a routerLink (click)="logout()"><i class="fa fa-close"></i>Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,7 +28,7 @@
                     <a routerLink="/cart">
                         Carrinho - <span class="cart-amunt">R$</span>
                     <i class="fa fa-shopping-cart"></i>
-                    <span class="product-count">5</span>
+                    <span class="product-count">{{numTotal()}}</span>
                     </a>
                 </div>
             </div>

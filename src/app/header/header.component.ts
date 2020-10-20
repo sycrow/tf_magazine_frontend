@@ -1,3 +1,5 @@
+import { CartService } from './../../services/domain/cart.service';
+import { StorageService } from './../../services/storage.service';
 import { API_CONFIG } from './../../config/api.config';
 import { CategoryDTO } from './../../models/category.dto';
 import { ProductService } from './../../services/domain/product.service';
@@ -25,7 +27,9 @@ export class HeaderComponent implements OnInit {
     public categoryService : CategoryService,
     private router: Router,
     public produtoService : ProductService,
-    public http : HttpClient
+    public http : HttpClient,
+    public storage: StorageService,
+    public cartService: CartService
     ) { }
 
   ngOnInit() {
@@ -43,5 +47,16 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/products/categorias/'+id]);
     this.categoryService.setId(id);
 
+  }
+
+  logout() {
+    this.storage.setLocalUser(null);
+  }
+
+  numTotal() {
+    
+    let num = this.cartService.getCart();
+
+    return num.items.length;
   }
 }

@@ -1,7 +1,7 @@
+import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PickAddressComponent } from './pick-address/pick-address.component';
-import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: "",
     component: HomeComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
   },
   {
     path: "products/:id",
@@ -32,12 +36,12 @@ const routes: Routes = [
     component: PickAddressComponent
   },
   {
-    path: "login",
-    component: LoginComponent
-  },
-  {
     path: "createAnAccount",
     component: SignupComponent
+  },
+  {
+    path: "profile",
+    component: ProfileComponent
   }
 ];
 

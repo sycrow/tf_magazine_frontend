@@ -1,4 +1,8 @@
+import { Router } from '@angular/router';
+import { ClientService } from './../../services/domain/client.service';
+import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
+import { ClientDTO } from 'src/models/client.dto';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  client: ClientDTO;
 
-  ngOnInit(): void {
+  constructor(
+    public storage: StorageService,
+    public clientService: ClientService,
+    public router: Router
+  ) { }
+
+  ngOnInit() {
   }
+
+  /* loadData() {
+    let localUser = this.storage.getLocalUser();
+    if (localUser && localUser.email) {
+      this.clientService.findByEmail(localUser.email).subscribe(response => {
+        this.client = response as ClientDTO;
+      },
+      error => {
+        if (error.status == 403) {
+          this.router.navigate(['/']);
+          console.log(error)
+        }
+      });
+    }
+    else {
+      this.router.navigate(['/'])
+    }
+  } */
 
 }
