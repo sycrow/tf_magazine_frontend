@@ -1,6 +1,7 @@
-import { environment } from './../environments/environment';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CredentialsDTO } from './../models/credentials.dto';
-import { API_CONFIG } from './../config/api.config';
+import { environment as env } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { LocalUser } from "../models/local_user";
@@ -14,29 +15,46 @@ import { CartService } from './domain/cart.service';
 export class AuthService {
 
   jwtHelper: JwtHelperService = new JwtHelperService();
+  private readonly PATH: string = 'auth';
 
   constructor(
     public http: HttpClient,
     public storage: StorageService,
-    public cartService: CartService
+    public cartService: CartService,
+    public router: Router
   ) { }
 
-  authenticate(creds: CredentialsDTO) {
-    return this.http.post(`${API_CONFIG.baseUrl}/login`, creds,
+  login(login: CredentialsDTO): Observable<any> {
+
+    return this.http.post(env.baseUrl + this.PATH, login);
+  }
+
+  refreshToken() {
+    return this.http.post(env.baseUrl + this.PATH, "/refresh")
+  }
+
+  logout() {
+    delete localStorage['token'];
+    this.router.navigate(['/']);
+  }
+
+  authenticated(): boolean {
+    if(localStorage['token'] == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  /*authenticate(creds: CredentialsDTO) {
+    return this.http.post(`${env.baseUrl}/login`, creds,
     {
       observe: 'response',
       responseType: 'text'
     })
   }
 
-  refreshToken() {
-    return this.http.post(`${API_CONFIG.baseUrl}/auth/refresh_token`,
-    {},
-    {
-      observe: 'response',
-      responseType: 'text'
-    });
-  }
+  
 
   successfullLogin(authorizationValue: string) {
     let tok = authorizationValue.substring(7);
@@ -46,10 +64,6 @@ export class AuthService {
     };
     this.storage.setLocalUser(user);
     this.cartService.createOrClearCart();
-  }
-
-  logout() {
-    this.storage.setLocalUser(null);
-  }
+  }*/
 
 }

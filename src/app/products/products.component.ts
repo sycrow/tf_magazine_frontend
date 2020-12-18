@@ -3,7 +3,7 @@ import { ProductDTO } from './../../models/product.dto';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/domain/product.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -15,23 +15,25 @@ export class ProductsComponent implements OnInit {
   items: ProductDTO[] = [];
   page: number = 0;
   item: ProductDTO;
+  id: string;
 
   constructor(
     public produtoService : ProductService,
     public http: HttpClient,
     public categoryService: CategoryService,
-    public router: Router
-  ) { }
+    public router: Router,
+    public route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
+  }
 
   ngOnInit() {
     this.loadData();
   }
 
   loadData() {
-
-    const id = this.categoryService.getId();
     
-    return this.produtoService.findByCategoria(id, this.page, 10).subscribe(response => {
+    return this.produtoService.findByCategoria(this.id, this.page, 10).subscribe(response => {
       this.items = this.items.concat(response['content']);
     },
     error => {

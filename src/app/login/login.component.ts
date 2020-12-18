@@ -23,31 +23,22 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ngOnEnter();
-  }
-
-  ngOnEnter() {
-    this.auth.refreshToken().subscribe(response => {
-      this.auth.successfullLogin(response.headers.get('Authorization'));
-      
-
-      console.log("jas");
-    },
-    error => {
-      console.log(error)
+    if (this.auth.authenticated() == true) {
+      this.router.navigate(['/'])
     }
-    );
   }
 
   login() {
-    this.auth.authenticate(this.creds).subscribe(response => {
-      this.auth.successfullLogin(response.headers.get('Authorization'));
+    this.auth.login(this.creds).subscribe(
+      data => {
+        localStorage['token'] = data['data']['token'];
+        const userData = JSON.parse(atob(data['data']['token'].split('.')[1]));
       
-      this.router.navigate(['/'])
-    },
-    error => {
-      console.log(error)
-    }
+        this.router.navigate(['/']);
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 

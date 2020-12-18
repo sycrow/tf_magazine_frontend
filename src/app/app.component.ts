@@ -1,7 +1,9 @@
+import { CategoryService } from './../services/domain/category.service';
 import { StorageService } from './../services/storage.service';
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
+import { CategoryDTO } from 'src/models/category.dto';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +13,18 @@ import { AuthService } from 'src/services/auth.service';
 export class AppComponent {
 
   constructor(
-    public auth: AuthService,
     public router: Router,
-    public storage: StorageService
-  ) { }
+    public categoryService: CategoryService,
+    public route: ActivatedRoute,
+    public auth: AuthService
+  ) {
+    
+   }
   
   ngOnInit() {
+    this.auth.refreshToken();
   }
+
+  
 
 }

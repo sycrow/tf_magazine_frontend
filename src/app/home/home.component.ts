@@ -1,3 +1,4 @@
+import { AuthService } from 'src/services/auth.service';
 import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor(
-    public storage: StorageService
+    public storage: StorageService,
+    public auth: AuthService
   ) { }
 
   ngOnInit() {

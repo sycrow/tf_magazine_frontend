@@ -1,8 +1,9 @@
+import { HttpUtilService } from './../../app/services/http-util.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { StorageService } from '../storage.service';
 import { ImageUtilService } from './image-util.service';
-import { API_CONFIG } from 'src/config/api.config';
+import { environment as env } from './../../environments/environment';
 import { Observable } from 'rxjs';
 import { ClientDTO } from '../../models/client.dto';
 
@@ -14,28 +15,28 @@ export class ClientService {
   constructor(
     public http: HttpClient,
     public storage : StorageService,
-    public imageUtilService : ImageUtilService
+    public imageUtilService : ImageUtilService,
+    public httpUtil: HttpUtilService
   ) { }
 
-  findByEmail(email : string) {
+  findByEmail(email : string): Observable<any> {
 
     return this.http.get(
-      `${API_CONFIG.baseUrl}/clientes/email?value=${email}`
-    );
+      `${env.baseUrl}clientes/email?value=${email}`, this.httpUtil.headers());
 
   }
 
   findById(id : string) {
 
     return this.http.get(
-      `${API_CONFIG.baseUrl}/clientes/${id}`
+      `${env.baseUrl}clientes/${id}`, this.httpUtil.headers()
     );
 
   }
 
   getImageFromBucket(id : string) : Observable<any> {
 
-    let url = `${API_CONFIG.bucketBaseUrl}/cp${id}.jpg`;
+    let url = `${env.bucketBaseUrl}cp${id}.jpg`;
     return this.http.get(url, {responseType : 'blob'});
 
   }
@@ -43,7 +44,7 @@ export class ClientService {
   insert(obj : ClientDTO) {
 
     return this.http.post(
-      `${API_CONFIG.baseUrl}/clientes`,
+      `${env.baseUrl}clientes`,
       obj,
       {
         observe : 'response',
@@ -59,7 +60,7 @@ export class ClientService {
     let formData : FormData = new FormData();
 
     return this.http.post(
-      `${API_CONFIG.baseUrl}/clientes/picture`,
+      `${env.baseUrl}clientes/picture`,
       formData,
       {
         observe : 'response',

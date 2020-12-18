@@ -9,7 +9,6 @@ import { Cart } from "../models/cart";
 export class StorageService {
 
   getLocalUser() : LocalUser {
-
     let user = localStorage.getItem(STORAGE_KEYS.localUser);
     if (user == null) {
       return null;

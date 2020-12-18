@@ -58,8 +58,13 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
-
-    this.router.navigate(['/pickAddress']);
+    if (this.cartService.total() == 0) {
+      alert("Você precisa colocar um ou mais itens no carrinho para prosseguir. Clique em 'Comprar mais produtos' ou clique em um dos itens de categorias")
+      this.router.navigate(['/cart'])
+    } else {
+      this.router.navigate(['/pickAddress']);
+    }
+    
     
   }
 

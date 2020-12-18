@@ -3,10 +3,10 @@ import { CityDTO } from './city.dto';
 export interface AddressDTO {
 
     id : string;
-    logradouro : string;
-    numero : string;
-    complemento : string;
-    bairro : string;
+    publicPlace : string;
+    number : string;
+    complement : string;
+    neighborhood : string;
     cep : string;
-    cidade : CityDTO;
+    city?: CityDTO;
 }

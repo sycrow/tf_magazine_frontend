@@ -1,3 +1,4 @@
+import { AuthService } from 'src/services/auth.service';
 import { CartService } from './../../services/domain/cart.service';
 import { StorageService } from './../../services/storage.service';
 import { API_CONFIG } from './../../config/api.config';
@@ -5,7 +6,7 @@ import { CategoryDTO } from './../../models/category.dto';
 import { ProductService } from './../../services/domain/product.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/domain/category.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -29,8 +30,12 @@ export class HeaderComponent implements OnInit {
     public produtoService : ProductService,
     public http : HttpClient,
     public storage: StorageService,
-    public cartService: CartService
-    ) { }
+    public cartService: CartService,
+    public route: ActivatedRoute,
+    public auth: AuthService
+    ) { 
+      
+    }
 
   ngOnInit() {
     this.categoryService.findAll().subscribe(response => {
@@ -42,15 +47,12 @@ export class HeaderComponent implements OnInit {
   }
 
   clickCategory(id: string) {
-
-    const url = `${API_CONFIG.baseUrl}/produtos/?categorias=${id}`;
+    
     this.router.navigate(['/products/categorias/'+id]);
-    this.categoryService.setId(id);
-
   }
 
   logout() {
-    this.storage.setLocalUser(null);
+    this.auth.logout();
   }
 
   numTotal() {

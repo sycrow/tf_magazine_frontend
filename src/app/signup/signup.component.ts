@@ -1,3 +1,4 @@
+import { AuthService } from 'src/services/auth.service';
 import { Router } from '@angular/router';
 import { ClientService } from './../../services/domain/client.service';
 import { StateService } from './../../services/domain/state.service';
@@ -23,7 +24,8 @@ export class SignupComponent implements OnInit {
     public cityService: CityService,
     public stateService: StateService,
     public clientService: ClientService,
-    public router: Router
+    public router: Router,
+    public auth: AuthService
   ) { 
 
     this.formGroup = this.formBuilder.group({
@@ -46,14 +48,19 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stateService.findAll().subscribe(response => {
-      this.estados = response;
-      this.formGroup.controls.stateId.setValue(this.estados[0].id);
-      this.updateCidades();
-    },
-    error => {
-      console.log(error)
-    })
+    if (this.auth.authenticated() == true) {
+      this.router.navigate(['/'])
+    } else {
+      this.stateService.findAll().subscribe(response => {
+        this.estados = response;
+        this.formGroup.controls.stateId.setValue(this.estados[0].id);
+        this.updateCidades();
+      },
+      error => {
+        console.log(error)
+      })
+    }
+    
   }
 
   updateCidades() {

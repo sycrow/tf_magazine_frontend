@@ -8,17 +8,17 @@
         <mat-card-content>
             <img class="imgCircle" src="../../assets/img/avatar-blank.png">
             <div class="info">
-                Nome: <h2>TF Magazine</h2>
-                Email: <p>tfmagazine@tf.com</p>
+                Nome: <h2>{{ client?.nome }}</h2>
+                Email: <p>{{ client?.email }}</p>
 
-                Endereço: <p>Av. Lorem Passos, 890</p>
-                Bairro: <p>São To</p>
+                Endereço: <p>{{ client?.adresses[0].publicPlace}}, {{ client?.adresses[0].number }}, {{ client?.adresses[0].complement }}</p>
+                Bairro: <p>{{ client?.adresses[0].neighborhood }}</p>
 
-                Número de telefone: <p>98828883</p>
+                Número de telefone: <p>{{ client?.phones }}</p>
 
-                Estado: <p>State</p>
-                Cidade: <p>City</p>
-                CEP: <p>67567-000</p>
+                Estado: <p>{{ client?.adresses[0].city.state.name }}</p>
+                Cidade: <p>{{ client?.adresses[0].city.name }}</p>
+                CEP: <p> {{ client?.adresses[0].cep }} </p>
             </div>
         </mat-card-content>
         <mat-card-actions>

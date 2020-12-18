@@ -47,9 +47,12 @@ export class CartService {
 
     let cart = this.getCart();
     let position = cart.items.findIndex(x => x.product.id == product.id);
+    var r = confirm("Deseja realmente excluir este produto?")
 
     if (position != -1) {
-      cart.items.splice(position, 1);
+      if (r == true) {
+        cart.items.splice(position, 1);
+      }
     }
 
     this.storage.setCart(cart);

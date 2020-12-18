@@ -1,3 +1,4 @@
+import { AuthService } from 'src/services/auth.service';
 import { Router } from '@angular/router';
 import { ClientService } from './../../services/domain/client.service';
 import { StorageService } from './../../services/storage.service';
@@ -16,14 +17,23 @@ export class ProfileComponent implements OnInit {
   constructor(
     public storage: StorageService,
     public clientService: ClientService,
-    public router: Router
+    public router: Router,
+    public auth: AuthService
   ) { }
 
   ngOnInit() {
+    if (this.auth.authenticated() == true) {
+      this.loadData();
+    } else {
+      this.router.navigate(['/'])
+    }
+    
+
   }
 
-  /* loadData() {
-    let localUser = this.storage.getLocalUser();
+  loadData() {
+    let localUser = JSON.parse(localStorage['localUser']);
+
     if (localUser && localUser.email) {
       this.clientService.findByEmail(localUser.email).subscribe(response => {
         this.client = response as ClientDTO;
@@ -33,11 +43,12 @@ export class ProfileComponent implements OnInit {
           this.router.navigate(['/']);
           console.log(error)
         }
+        console.log(error)
       });
     }
     else {
       this.router.navigate(['/'])
     }
-  } */
+  } 
 
 }

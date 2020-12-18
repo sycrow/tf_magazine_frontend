@@ -1,8 +1,8 @@
+import { environment as env } from './../../environments/environment';
 import { CategoryDTO } from './../../models/category.dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_CONFIG } from "../../config/api.config";
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class CategoryService {
 
   findAll() : Observable<CategoryDTO[]> {
 
-    return this.http.get<CategoryDTO[]>(`${API_CONFIG.baseUrl}/categorias`);
+    return this.http.get<CategoryDTO[]>(`${env.baseUrl}categorias`);
 
   }
 

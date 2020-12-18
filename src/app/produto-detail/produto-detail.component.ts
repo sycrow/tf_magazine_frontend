@@ -3,7 +3,7 @@ import { CategoryService } from './../../services/domain/category.service';
 import { ProductService } from './../../services/domain/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductDTO } from 'src/models/product.dto';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto-detail',
@@ -14,12 +14,17 @@ export class ProdutoDetailComponent implements OnInit {
 
   product: ProductDTO;
 
+  id : string;
+
   constructor(
     public produtoService: ProductService,
     public categoryService: CategoryService,
     public cartService: CartService,
-    public router: Router
-  ) { }
+    public router: Router,
+    public route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => this.id = params['id'])
+  }
 
   ngOnInit() {
     this.loadData();
@@ -27,9 +32,7 @@ export class ProdutoDetailComponent implements OnInit {
 
   loadData() {
 
-    const id = this.produtoService.getId();
-
-    return this.produtoService.findById(id).subscribe(response => {
+    return this.produtoService.findById(this.id).subscribe(response => {
       this.product = response;
     }, error => {
       console.log(error)
