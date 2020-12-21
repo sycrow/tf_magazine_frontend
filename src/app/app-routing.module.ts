@@ -1,3 +1,5 @@
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { PaymentComponent } from './payment/payment.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path: "profile",
     component: ProfileComponent
+  },
+  {
+    path: "paymentPage",
+    component: PaymentComponent
+  },
+  {
+    path: "orderConfirmationPage",
+    component: OrderConfirmationComponent
   }
 ];
 

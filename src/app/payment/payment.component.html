@@ -1,1 +1,31 @@
-<p>payment works!</p>
+<app-header></app-header>
+
+<mat-card>
+    <mat-card-title>
+        Forma de pagamento
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-radio-group aria-label="Forma de pagamento" formControlName="@type">
+                <mat-radio-button value="pagamentoComCartao">
+                    Pagamento com cartão
+                </mat-radio-button>
+
+                <mat-radio-button value="pagamentoComBoleto">
+                    Pagamento com boleto
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <mat-form-field *ngIf="form.value['@type'] == 'pagamentoComCartao'">
+                <mat-label>Parcelas no cartão</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let n of parcelas; first as f" [value]="n">{{n}}></mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button block [disabled]="form.invalid" (click)="nextPage()">Próximo</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<app-footer></app-footer>
